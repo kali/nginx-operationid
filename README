@@ -1,0 +1,13 @@
+NGINX plugin that sets a different operationid on each and every request.
+
+It is meant to trace one or several upstream queries triggered by a single incoming 
+request.
+
+The $operationid can be used to log it.
+
+It can also be propagated as a header to an upstram server using proxy_set_header. 
+The upstream server will look for the header and use the same operationid.
+
+operationid on; # set up the module
+operationid_header X-Ngx-OperationId; # set the header to look for in the 
+                                      # incoming query.
