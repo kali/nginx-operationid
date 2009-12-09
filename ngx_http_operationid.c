@@ -171,10 +171,10 @@ ngx_http_operationid_get_operationid(ngx_http_request_t *r, ngx_http_operationid
         sequencer_v2 = 0x03030302;
     }
 
-    ctx->operationid = (u_char*) ngx_pcalloc(r->pool, 17);
-    ctx->operationid[16] = 0;
+    ctx->operationid = (u_char*) ngx_pcalloc(r->pool, 33);
+    ctx->operationid[32] = 0;
     rid_as_pc = (u_char *) rid;
-    for(i=0; i<8; i++) {
+    for(i=0; i<16; i++) {
         ctx->operationid[2*i]   = hex[rid_as_pc[i] >> 4];
         ctx->operationid[2*i+1] = hex[rid_as_pc[i] & 0xf];
     }
